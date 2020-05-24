@@ -1,12 +1,9 @@
 {
-    "name": "Fake News Detection",
-    "version": "1.0",
-    "description": "Fake News Extension helps to detect fake news on web!",
-    "browser_action": {
-        "default_popup": "popup.html"
-    },
-    "permissions": [
-        "http://localhost:3000/news"
-    ],
-    "manifest_version": 2
+	"name": "Fake News Detection",
+	"version": "1.0",
+	"description": "Fake News Extension helps to detect fake news on web!",
+	"browser_action": {
+		"default_popup": "popup.html"
+	},
+	"manifest_version": 2
 }

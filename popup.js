@@ -1,30 +1,25 @@
+const evaluate = async (news) => {
+	const newsResult = document.createElement('p');
+	encoder = await use.load();
+	embeddings = await encoder.embed(news);
+	arr = await embeddings.array();
+	model = await tf.loadLayersModel('https://santoshvijapure.github.io/model/model.json');
+	console.log(model);
+	result = await model.predict(tf.tensor(arr));
+	result = await result.array();
+
+	result = result[0][0];
+
+	newsResult.innerHTML = result > 0.5 ? 'This is True' : 'This is Fake';
+	document.getElementsByTagName('body')[0].appendChild(newsResult);
+};
+
 function clickHandler() {
-    // Initialization work goes here.
-    const newsResult = document.createElement('p');
-    const newsText = document.getElementById('news').value;
-
-    const body = {
-        'news': newsText
-    }
-
-    console.log(body);
-
-    fetch('http://localhost:3000/news', {
-        method: 'POST',
-        headers: {
-            'content-type': 'application/json'
-        },
-        body: JSON.stringify(body)
-    }).then(response => {
-        return response.json();
-    }).then(result => {
-        newsResult.innerHTML = result.message;
-        document.getElementsByTagName('body')[0].appendChild(newsResult);
-    }).catch(error => {
-        console.log(error);
-    });
+	// Initialization work goes here.
+	const newsText = document.getElementById('news').value;
+	evaluate(newsText);
 }
 
-document.addEventListener('DOMContentLoaded', function () {
-    document.querySelector('button').addEventListener('click', clickHandler);
+document.addEventListener('DOMContentLoaded', function() {
+	document.querySelector('button').addEventListener('click', clickHandler);
 });
